@@ -1,16 +1,33 @@
-import ItemListContainer from "../ItemListContainer";
-import styles from "./navbar.module.scss";
-import CardWidget from "../CardWidget";
+import { NavLink } from "react-router-dom";
+import styles from "./navbar.module.css";
+import { HiShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
+  const activeStyle = {
+    color: "red",
+  };
+
   return (
-    <div className={styles.container}>
-      <ItemListContainer greeting="Hola" />
-      <p>Mujer</p>
-      <p>Hombre</p>
-      <p>Niños</p>
-      <CardWidget icono="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" />
-    </div>
+    <nav className={styles.container}>
+      <NavLink
+        to="/home"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        <p>Home</p>
+      </NavLink>
+      <NavLink
+        to="/products"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        <p>Products</p>
+      </NavLink>
+      <NavLink
+        to="/cart"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
+        <HiShoppingCart />
+      </NavLink>
+    </nav>
   );
 };
 
